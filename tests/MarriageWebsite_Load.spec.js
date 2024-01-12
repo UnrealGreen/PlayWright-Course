@@ -84,9 +84,14 @@ test ("Marriage Applicaiton", async ({page}) => {
     await page.getByRole('button', { name: 'Next Next' }).click();
 
     //Press Next again
-    await page.getByRole('button', { name: 'Next Next' }).nth(1).click();
+
+    const lastNext = page.getByRole('button', { name: 'Next Next' }).nth(1);
+    lastNext.scrollIntoViewIfNeeded();
+    page.keyboard.press('PageUp');
+    await lastNext.click();
 
     //Enter # of certified copies
+    page.keyboard.press('PageUp');
     const certifiedCopes = page.locator('.tab-content > div > .layout-row > .form-group > .form-control')
     await certifiedCopes.press('ArrowRight');
     await certifiedCopes.press('Backspace');
@@ -103,7 +108,6 @@ test ("Marriage Applicaiton", async ({page}) => {
     
 
 
-    await page.pause();
 
 
 
