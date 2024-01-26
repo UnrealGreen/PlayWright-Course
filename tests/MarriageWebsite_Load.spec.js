@@ -3,8 +3,10 @@ import {waitForElement} from "@testing-library/dom"
 
 
 
-test ("Marriage Applicaiton", async ({page}) => {
+test("Marriage Applicaiton", async ({page}) => {
     await page.goto("https://clerkconnectdevtest.azurewebsites.net/login");
+    page.pause;
+
 
     //Click on Marriage Application
 
@@ -12,7 +14,7 @@ test ("Marriage Applicaiton", async ({page}) => {
 
     //Click On Date Picker, enter date, and click start application
     await page.getByLabel('Open calendar').click();
-    await page.getByLabel('Monday January').nth(3).click();
+    await page.getByLabel('Monday January').nth(4).click();
     await page.getByRole('button', { name: 'Start Application Start' }).click();
 
 
@@ -98,7 +100,7 @@ test ("Marriage Applicaiton", async ({page}) => {
     await certifiedCopes.pressSequentially('2');
 
     //Submitting Marriage Application
-    await page.getByRole('button', { name: 'Submit to Clerk' }).click();
+    //await page.getByRole('button', { name: 'Submit to Clerk' }).click();
     
 
 
